@@ -3,7 +3,7 @@ import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.standard.StandardTokenizer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.opensearch.common.settings.Settings;
-import org.opensearch.index.Index;
+import org.opensearch.core.index.Index;
 import org.opensearch.index.analysis.HangulChosungFilterFactory;
 import org.opensearch.index.analysis.HangulJamoTokenFilterFactory;
 import org.opensearch.index.analysis.TokenFilterFactory;
@@ -30,7 +30,7 @@ public class HangulJamoAnalysisTests extends OpenSearchTestCase {
         assertTrue(tokenFilter instanceof HangulJamoTokenFilterFactory);
 
         String source = "사랑하는 사람들.,!";
-        String[] expected = new String[]{"ㅅㅏㄹㅏㅇㅎㅏㄴㅡㄴ", "ㅅㅏㄹㅁㄷㅡㄹ"};
+        String[] expected = new String[]{"ㅅㅏㄹㅏㅇㅎㅏㄴㅡㄴ", "ㅅㅏㄹㅏㅁㄷㅡㄹ"};
         Tokenizer tokenizer = new StandardTokenizer();
         tokenizer.setReader(new StringReader(source));
         assertSimpleTSOutput(tokenFilter.create(tokenizer), expected);
