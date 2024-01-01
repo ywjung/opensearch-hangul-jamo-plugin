@@ -1,0 +1,5 @@
+.idea/
+target/
+.git/
+.DS_Store
+opensearch-hangul-jamo-plugin.iml
